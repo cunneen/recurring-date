@@ -4,6 +4,9 @@
   "description": "Generate a list of dates that repeat based on a given schedule",
   "main": "lib/RecurringDate.js",
   "types": "types/RecurringDate.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "browserify": "browserify --standalone RecurringDate --debug --outfile dist/recurring-date.js ./index.js",
     "test": "mocha --reporter spec",
