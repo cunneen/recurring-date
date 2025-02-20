@@ -22,13 +22,13 @@ This library will generate a list of dates for those patterns.
 
 ```
 npm install moment
-npm install recurring-date
+npm install @cunneen/recurring-date
 ```
 
 ## Usage
 
 ```js
-var RecurringDate = require('recurring-date');
+var RecurringDate = require('@cunneen/recurring-date');
 var moment = require('moment');
 RecurringDate.initializeWithDateLibrary(moment);
 // Every day starting on Sunday, February 21, 2010 until Sunday, March 7, 2010
@@ -70,17 +70,12 @@ This is a fork of mooman's [recurring_dates](https://github.com/mooman/recurring
   - dayjs or momentjs (or a momentjs-compatible library) is required as a peer dependency
 - Added types
 - Fixed some issues around timezones
+- Replaced browser tests with mocha
+- a date format is now required input
 
 #### Requirements
 
 - dayjs or momentjs is required as a peer dependency
-
-#### Usage
-
-    var r = new RecurringDate(pattern);
-    alert(r.describe());
-    dates = r.generate();
-    if (r.contains('03/28/10')) alert('in pattern!');
 
 #### API
 

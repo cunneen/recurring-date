@@ -1,7 +1,7 @@
 {
-  "name": "recurring-date",
+  "name": "@cunneen/recurring-date",
   "version": "1.0.0",
-  "description": "Generate a list of dates that meet a given schedule",
+  "description": "Generate a list of dates that repeat based on a given schedule",
   "main": "lib/RecurringDate.js",
   "types": "types/RecurringDate.d.ts",
   "scripts": {
