@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+    <link rel="stylesheet" href="./mocha-override.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+    <script src="https://unpkg.com/chai@4/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
+      integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script class="mocha-init">
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+    </script>
+    <script src="../dist/recurring-date.js"></script>
+
+    <script src="spec-loader.js"></script>
+
+    <script class="mocha-exec">
+      window.onSpecsReady(() => {
+        mocha.run();
+      });
+    </script>
+  </body>
+</html>

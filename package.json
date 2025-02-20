@@ -1,14 +1,17 @@
 {
   "name": "recurring-date",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Generate a list of dates that meet a given schedule",
-  "main": "index.js",
+  "main": "lib/RecurringDate.js",
+  "types": "types/RecurringDate.d.ts",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "browserify": "browserify --standalone RecurringDate --debug --outfile dist/recurring-date.js ./index.js",
+    "test": "mocha --reporter spec",
+    "types": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nathanoehlman/recurring-date.git"
+    "url": "git+https://github.com/cunneen/recurring-date.git"
   },
   "keywords": [
     "momentjs",
@@ -17,16 +20,29 @@
   ],
   "author": "Nathan Oehlman",
   "license": "MIT",
-  "dependencies": {
-    "moment": "~2.14.1",
-    "underscore": "~1.5.2"
+  "peerDependencies": {
+    "dayjs": "^1.11.13",
+    "moment": "2.30.1"
   },
   "contributors": [
+    "Mike Cunneen (https://github.com/cunneen)",
     "Matt Grayson (https://github.com/mattgrayson)",
     "Rachot Moragraan (https://github.com/mooman)"
   ],
   "devDependencies": {
-    "expect.js": "~0.2.0",
-    "mocha": "^3.0.2"
+    "@eslint/js": "^9.20.0",
+    "@types/chai": "^5.0.1",
+    "@types/mocha": "^10.0.10",
+    "@types/moment": "^2.11.29",
+    "browserify": "^17.0.1",
+    "dayjs": "^1.11.13",
+    "eslint": "^9.20.1",
+    "globals": "^15.15.0",
+    "mocha": "^11.1.0",
+    "moment": "2.30.1",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
   }
 }

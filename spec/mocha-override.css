@@ -1,0 +1,22 @@
+#mocha {
+  font-size: 32px;
+  line-height: 1.5;
+}
+#mocha h2 {
+  font-size: 0.6em;
+}
+
+#mocha .test a.replay {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+
+}
+
+#mocha-stats {
+  font-size: 0.6em;
+}

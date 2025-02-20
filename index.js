@@ -1,1 +1,1 @@
-module.exports = require('./lib/recurring');
+module.exports = require("./lib/RecurringDate");
