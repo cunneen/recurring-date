@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- recurring-date playground -->
+<html>
+
+<head>
+  <title>@cunneen/recurring-date</title>
+  <!-- jquery -->
+  <script type='text/javascript' src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+  <!-- moment -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+  <!-- fullcalendar -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+  <script src=" https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.15/index.global.min.js "></script>
+  <script>
+    // override require JS for use in browser.
+    function require(libname) {
+      if (libname === 'moment') {
+        return moment;
+      }
+    }
+    // importing lib/RecurringDate.js (below) will be OK except for its "module.exports" line
+    const module = {};
+  </script>
+  <!-- =========== RecurringDate.js import ================================== -->
+  <script type='text/javascript' src='../lib/RecurringDate.js'></script>
+
+  <!-- ==================================================== -->
+  <!-- prism js syntax-highlights 'code' elements -->
+  <!--Guide: https://prismjs.com/#basic-usage-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css">
+
+  <!--You can also choose custom themes by changing "prism" above to something like "prism-dark" from https://prismjs.com/index.html-->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+  <!-- ==================================================== -->
+  <!-- bootstrap 5 datepicker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker-bs5.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker.min.js"></script>
+  <!-- ==================================================== -->
+  <!-- bootstrap icons - suggested for fullcalendar -->
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.css"> 
+  
+  <!-- <link rel="stylesheet" href="css/bootstrap-lux.css" type="text/css"> -->
+  <link rel="stylesheet" href="css/overrides.css" type="text/css">
+  <link rel="stylesheet" href="css/site.css" type="text/css">
+  <!-- bootstrap javascript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <!-- ================== MAIN JS========================== -->
+  <script src="js/site.js" type='module'>
+  </script>
+</head>
+<!-- ==================================================== -->
+
+<body class="bg-dark">
+  <!-- As a heading -->
+<nav class="navbar bg-primary-subtle">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Recurring Date - Playground</span>
+  </div>
+</nav>
+  <div class="container-fluid mt-3">
+    <div class="card mb-3">
+      <div class="card-body">
+        <code>@cunneen/recurring-date</code> is a small, zero-dependency, Javascript utility for generating recurring
+dates i.e. dates that repeat on a regular schedule (e.g. "Every 3 days", or "Every third Tuesday and Thursday").
+See the <a href="https://github.com/cunneen/recurring-date">GitHub repo</a> for more details.    
+      </div>
+    </div>
+    <div class="row">
+      <!-- ========== The Configuration panel =========================== -->
+      <div class="col-12 col-sm-9 col-md-7 col-lg-4 col-xl-4">
+        <div class="card">
+          <div class="card-header bg-success text-bg-success">
+            Instructions
+          </div>
+          <div class="card-body justify-content-start">
+            <p>
+              Try changing some values in the form below, and then press
+              "Generate" to generate the recurring dates.
+            </p>
+            <p>
+              Expand the sections further below for install instructions and code examples.
+            </p>
+
+            <div class="accordion" id="configAccordion">
+              <!-- ========== The HTML Form =========================== -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseForm" aria-expanded="true" aria-controls="collapseForm">
+                    Configure Recurring Date Pattern
+                  </button>
+                </h2>
+                <div id="collapseForm" class="accordion-collapse collapse show">
+                  <div class="accordion-body mx-0 px-0">
+                    <!-- The form itself -->
+
+                    <form>
+                      <div class="input-group input-group-sm mb-3">
+                        <label for="every" class="input-group-text">Every</label>
+                        <input id='every' class="form-control-sm " type='number' value='2' size='2' min="1" />
+                        <select class="form-select" id='unit'>
+                          <option value='d'>day(s)</option>
+                          <option value='w'>week(s)</option>
+                          <option value='m'>month(s)</option>
+                          <option value='y'>year(s)</option>
+                        </select>
+                      </div>
+                      <div class="input-group input-group-sm mb-3" id='month_span' style='display:none'>
+
+                        <span class="input-group-text">on the</span>
+                        <select class="form-select" id='nth'>
+                          <option value='1'>first</option>
+                          <option value='2'>second</option>
+                          <option value='3'>third</option>
+                          <option value='4'>fourth</option>
+                          <option value='-1'>last</option>
+                        </select>
+                        <select class="form-select" id='occurrence_of'>
+                          <option value="0">Sunday</option>
+                          <option value="1">Monday</option>
+                          <option value="2">Tuesday</option>
+                          <option value="3">Wednesday</option>
+                          <option value="4">Thursday</option>
+                          <option value="5">Friday</option>
+                          <option value="6">Saturday</option>
+                          <option value="-1">day</option>
+                        </select>
+                      </div>
+
+                      <div id='week_span'
+                        class="input-group input-group-sm mb-3 justify-content-evenly align-items-center"
+                        style='display:none'>
+                        <span class="input-group-text flex-grow-1 mr-3">on</span>
+                        <div class="flex-grow-1 justify-content-center ml-3">
+                          <div class="form-check form-check-inline">
+                            <input class='week_days form-check-input' type='checkbox' value='0' id="sun">
+                            <label for="sun" class="form-check-label">Sun</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class='week_days form-check-input' type='checkbox' value='1' id="mon">
+                            <label for="mon" class="form-check-label">Mon</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class='week_days form-check-input' type='checkbox' value='2' id="tue">
+                            <label for="tue" class="form-check-label">Tue</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class='week_days form-check-input' type='checkbox' value='3' id="wed">
+                            <label for="wed" class="form-check-label">Wed</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class='week_days form-check-input' type='checkbox' value='4' id="thu">
+                            <label for="thu" class="form-check-label">Thu</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class='week_days form-check-input' type='checkbox' value='5' id="fri">
+                            <label for="fri" class="form-check-label">Fri</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class='week_days form-check-input' type='checkbox' value='6' id="sat">
+                            <label for="sat" class="form-check-label">Sat</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="input-group input-group-sm mb-3">
+
+                        <span class="input-group-text">from</span>
+                        <input id='start' type='text' class="form-control" />
+                        <select class="form-select" id='end_condition'>
+                          <option>for</option>
+                          <option>until</option>
+                        </select>
+                      </div>
+                      <div class="input-group input-group-sm mb-3" id='for_span'>
+
+                        <span class="input-group-text">for</span>
+                        <input id='rfor' type='number' class="form-control-sm" value='10' min="1" />
+                        <span class="input-group-text">occurrences</span>
+                      </div>
+                      <div class="input-group input-group-sm mb-3" id='until_span' style='display:none'>
+                        <span class="input-group-text">until date:</span>
+                        <input id='until' class="form-control" type='text' />
+                      </div>
+                      <div class="mb-3 text-center btn-group-sm">
+                        <button type="button" class="btn btn-outline-primary m-1">Generate all</button>
+                        <button type="button" class="btn btn-outline-primary m-1" value='10'>Generate sample
+                          (10)</button>
+                      </div>
+
+                    </form>
+                    <div class="alert alert-info">
+                      Expand the sections below for more detailed information
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ========== How to Install =========================== -->
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseInstall" aria-expanded="false" aria-controls="collapseInstall">
+                    How to Install
+                  </button>
+                </h2>
+                <div id="collapseInstall" class="accordion-collapse collapse">
+                  <div class="accordion-body mx-0 px-0">
+                    <!-- text -->
+                    <div class="mb-3 ">
+                      <pre><code class="language-bash">npm install @cunneen/recurring-date
+# you also need moment or dayjs installed
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ============ Javascript code ====================== -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseJavascript" aria-expanded="false" aria-controls="collapseJavascript">
+                    Javascript Code
+                  </button>
+                </h2>
+                <div id="collapseJavascript" class="accordion-collapse collapse">
+                  <div class="accordion-body mx-0 px-0">
+                    <p>
+                      Below is the Javascript code that, based on what
+                      you've configured in the form above, will generate the dates.
+                    </p>
+                    <p>
+                      Click the "copy" button to copy the code to the clipboard.
+                    </p>
+
+                    <pre><code class="language-js" id="outputJS"></code></pre>
+
+                  </div>
+                </div>
+              </div>
+              <!-- ============ Pattern output ====================== -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsePattern" aria-expanded="false" aria-controls="collapsePattern">
+                    Current Pattern (JSON)
+                  </button>
+                </h2>
+                <div id="collapsePattern" class="accordion-collapse collapse">
+                  <div class="accordion-body mx-0 px-0">
+                    <div class="mb-3 ">
+                      <p>
+                        Below is the JSON date-recurrence pattern that you've configured in the form above.
+                      </p>
+                      <p>
+                        Click the "copy" button to copy the pattern to the clipboard.
+                      </p>
+                      <pre><code class="language-json" id="outputPattern"></code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- ============= Calendar ============================= -->
+
+      <div class="col">
+        <div class="card">
+          <div class="card-header text-info">
+            Generated Dates - Calendar View
+            <div id="descriptionOutput" class="alert alert-primary" role="alert">
+
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <div id='calendar'></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

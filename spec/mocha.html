@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Mocha Tests</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
-    <link rel="stylesheet" href="./mocha-override.css" />
-  </head>
-  <body>
-    <div id="mocha"></div>
 
-    <script src="https://unpkg.com/chai@4/chai.js"></script>
-    <script src="https://unpkg.com/mocha/mocha.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
-      integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+<head>
+  <meta charset="utf-8" />
+  <title>Mocha Tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mocha@11.1.0/mocha.css">
+  <link rel="stylesheet" href="./mocha-override.css" />
 
-    <script class="mocha-init">
-      mocha.setup("bdd");
-      mocha.checkLeaks();
-    </script>
-    <script src="../dist/recurring-date.js"></script>
+</head>
 
-    <script src="spec-loader.js"></script>
+<body>
+  <div id="mocha"></div>
 
-    <script class="mocha-exec">
-      window.onSpecsReady(() => {
-        mocha.run();
-      });
-    </script>
-  </body>
+  <script type="module">
+    import chai from 'https://cdn.jsdelivr.net/npm/chai@5.2.0/+esm' 
+  </script>
+  <script type="module">
+    import mocha from 'https://cdn.jsdelivr.net/npm/mocha@11.1.0/+esm' 
+  </script>
+  <script type="module">
+    import moment from 'https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm' 
+  </script>
+
+  <script class="mocha-init" type="module">
+    mocha.setup("bdd");
+    mocha.checkLeaks();
+  </script>
+
+  <script src="helper.mjs" type="module"></script>
+
+  <script class="mocha-exec" type="module">
+    import { tests } from "./spec.test.mjs";
+    tests().then(() => {
+      mocha.run();
+    })
+
+  </script>
+</body>
+
 </html>

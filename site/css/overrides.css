@@ -1,0 +1,31 @@
+/* ==== bootstrap "lux" theme overrides */
+/* the 'lux' bootstrap theme does something weird to the select element dropdown handles */
+.input-group-sm > .form-select {
+  padding-right: 4rem;
+}
+
+/* the 'lux' bootstrap theme has crazy amounts of horizontal padding in the input fields */
+.input-group-sm > .btn,
+.input-group-sm > .form-control,
+.input-group-sm > .form-select,
+.input-group-sm > .input-group-text {
+  padding: 0.5rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* the 'lux' bootstrap theme makes it hard to see which buttons are active */
+.btn-primary {
+  --bs-btn-active-bg: var(--bs-danger);
+}
+
+/* ==== prism js code syntax highlighter overrides ==== */
+/* prism js only shows the "copy" button on hovering */
+div.code-toolbar > .toolbar {
+  opacity: 1;
+}
+
+/* ==== fullcalendar overrides ==== */
+/* heading fonts are too big */
+.fc .fc-toolbar-title {
+  font-size: 1.3em;
+}

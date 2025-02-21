@@ -1,14 +1,37 @@
-/* global describe, it, RecurringDate, moment, expect */
+/* global describe, it */
+/** @typedef {import("../lib/RecurringDate")} RecurringDate */
 
-/** @typedef {import("../types/RecurringDate")} RecurringDate */
-RecurringDate.initializeWithDateLibrary(moment);
+const doImports = async () => {
+  // RecurringDate.js is a commonjs module. when
+  //  we're loading it via ESM, it chokes on the final
+  //  "module.exports = ...." statement.
+  //  So we mock the "module" object, after which the actual
+  //  library we want will be attached to our mocked "module".
+  globalThis.module = globalThis.module || {};
+  await import("../lib/RecurringDate.js");
+  /** @type {RecurringDate} */
+  const RecurringDate = module.exports;
+  const { expect } = await import(
+    "https://cdn.jsdelivr.net/npm/chai@5.2.0/+esm"
+  );
 
-export const tests = (helpers) => {
+  const { default: moment } = await import(
+    "https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm"
+  );
+
+  const { helpers } = await import("./helper.mjs");
+  return { moment, RecurringDate, expect, helpers };
+};
+
+export const tests = async () => {
+  const { moment, RecurringDate, expect, helpers } = await doImports();
+  /** @type {RecurringDate} */
+  RecurringDate.initializeWithDateLibrary(moment);
+
   var datesEqual = helpers.datesEqual;
   var datesEqualFailure = helpers.datesEqualFailure;
   // common function to test expected dates
   var testDates = function (pattern, expectedDates) {
-    /** @type {RecurringDate}  */
     var r = new RecurringDate(pattern);
 
     expectedDates = expectedDates.map(function (d) {

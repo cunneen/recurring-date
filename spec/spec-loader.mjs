@@ -1,4 +1,6 @@
-/* global chai */
+import { helpers } from "./helper.mjs";
+import { tests } from "./spec.test.mjs";
+import chai from 'https://cdn.jsdelivr.net/npm/chai@5.2.0/+esm' ;
 /**
  * @typedef {()=>any} SpecListenr
  */
@@ -17,17 +19,10 @@ window.onSpecsReady = function (listener) {
 /**
  * Load the helper and the test spec, then notify listeners that we're ready.
  */
-import("./helper.mjs").then(
-  (helperModule) => {
-    chai?.should?.();
-    window.expect = chai?.expect;
-    import("./spec.test.mjs").then((specModule) => {
-      specModule.tests(helperModule.helpers);
-      for (const listener of _specListeners) {
-        listener();
-      }
-    });
-  
-  }
-);
+chai?.should?.();
+window.expect = chai?.expect;
 
+tests(helpers);
+for (const listener of _specListeners) {
+  listener();
+}

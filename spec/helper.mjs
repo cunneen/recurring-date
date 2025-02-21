@@ -1,6 +1,5 @@
 /* helper functions */
-/* global moment */
-
+import moment from 'https://cdn.jsdelivr.net/npm/moment@2.30.1/+esm';
 function humanReadableDates(dates) {
   const dateFormat = "MM/DD/YYYY";
   if (dates instanceof Array) {

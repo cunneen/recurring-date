@@ -256,7 +256,7 @@ function runTests(dateLibrary, RecurringDate, dateLibraryDescription) {
       var start = dateLibrary(
         startDateString,
         startDateFormat
-        //TODO: datejs has a bug with strict parsing of timezones, see https://github.com/iamkun/dayjs/issues/2797 ;
+        //TODO: dayjs has a bug with strict parsing of timezones, see https://github.com/iamkun/dayjs/issues/2797 ;
         //      once that is fixed, change strict parsing to true by uncommenting the following line
         // ,true
       );
@@ -282,7 +282,7 @@ function runTests(dateLibrary, RecurringDate, dateLibraryDescription) {
       var start = dateLibrary(
         startDateString,
         startDateFormat
-        //TODO: datejs has a bug with strict parsing of timezones, see https://github.com/iamkun/dayjs/issues/2797 ;
+        //TODO: dayjs has a bug with strict parsing of timezones, see https://github.com/iamkun/dayjs/issues/2797 ;
         //      once that is fixed, change strict parsing to true by uncommenting the following line
         // ,true
       );
