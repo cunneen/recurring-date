@@ -4,6 +4,8 @@ A zero-dependency* JavaScript library to generate recurring dates i.e. dates tha
 
 (*momentjs or dayjs must be installed as a peer dependency)
 
+See the [interactive demo][demo]
+
 For example:
 
 ```txt
@@ -20,7 +22,7 @@ This library will generate an array of dates for those patterns.
 
 ## Installation
 
-```
+```console
 npm install moment
 npm install @cunneen/recurring-date
 ```
@@ -65,7 +67,11 @@ var dates = r.generate();
 
 This is a fork of mooman's [recurring_dates](https://github.com/mooman/recurring_dates).
 
-##### Changes in this fork
+## Demo
+
+See the [interactive demo][demo]
+
+### Changes in this fork
 
 - Removed all hard dependencies:
   - dayjs or momentjs (or a momentjs-compatible library) is required as a peer dependency
@@ -159,3 +165,6 @@ Please feel free fork and improve, submit bug reports, suggestions, comments.
 ### LICENSE
 
 Released under MIT License.
+
+<!-- links -->
+[demo]:https://cunneen.github.io/recurring-date/
