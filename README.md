@@ -158,6 +158,10 @@ Optional argument limit puts an upper limit on how many dates to generate
 - Indefinite ending date (seems to be working if occurences == 0)
 - Throwaway date generation (not store in array, but just output it)
 
+### CHANGELOG
+
+See [CHANGELOG.md][changelog]
+
 ### COMMENTS
 
 Please feel free fork and improve, submit bug reports, suggestions, comments.
@@ -168,3 +172,4 @@ Released under MIT License.
 
 <!-- links -->
 [demo]:https://cunneen.github.io/recurring-date/
+[changelog]:./CHANGELOG.md
