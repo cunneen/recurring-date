@@ -29,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Copy RecurringDate.js into docs folder
-        run: cp ./lib/RecurringDate.js ./docs/js/
+        run: cp -f ./lib/RecurringDate.js ./docs/js/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
