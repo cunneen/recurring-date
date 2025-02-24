@@ -8,7 +8,7 @@ const doImports = async () => {
   //  So we mock the "module" object, after which the actual
   //  library we want will be attached to our mocked "module".
   globalThis.module = globalThis.module || {};
-  await import("../../lib/RecurringDate.js");
+  await import("../js/RecurringDate.js");
   /** @type {RecurringDate} */
   const RecurringDate = module.exports;
   const { expect } = await import(
