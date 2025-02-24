@@ -1,6 +1,6 @@
 # recurring-date
 
-A zero-dependency* JavaScript library to generate recurring dates.
+A zero-dependency* JavaScript library to generate recurring dates i.e. dates that repeat on a regular schedule  (e.g. "Every 3 days", or "Every third Tuesday and Thursday").
 
 (*momentjs or dayjs must be installed as a peer dependency)
 
@@ -14,7 +14,7 @@ Every 2 weeks on Monday, Wednesday, and Friday starting today for 5 occurrences
 Every month on the last Sunday starting on 02/10/09 until 03/30/10
 ```
 
-This library will generate a list of dates for those patterns.
+This library will generate an array of dates for those patterns.
 
 ---
 
