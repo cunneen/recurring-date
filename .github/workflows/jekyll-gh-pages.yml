@@ -28,8 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Copy RecurringDate.js into docs folder
-        run: cp -f ./lib/RecurringDate.js ./docs/js/
+      - name: Overwrite RecurringDate.js symlinks with copy of actual file
+        run: rm -vf ./docs/js/RecurringDate.js && cp -vf ./lib/RecurringDate.js ./docs/js/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
