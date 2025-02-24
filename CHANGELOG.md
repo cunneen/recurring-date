@@ -48,49 +48,6 @@ All notable changes to this project will be documented in this file.
 [3adcc10]:../../commit/3adcc10c7d0978571325ed9eee8c5f7e8172c6b4
 [d348795]:../../commit/d3487957dd319e2b210fccd7e4f30939a19a983b
 
-## Unreleased
-
-
-### :rocket: New features
-
-- :sparkles: new playground. refactor browser tests. [<sup>(1444c4e)</sup>][1444c4e]
-
-### :memo: Documentation
-
-- :memo: update README [<sup>(20933f8)</sup>][20933f8]
-- :recycle: rename site => docs; move spec => docs/spec [<sup>(c185c27)</sup>][c185c27]
-- :memo: update README and docs/index [<sup>(0d22ce5)</sup>][0d22ce5]
-- :memo: use symlinks for RecurringDate.js [<sup>(a736766)</sup>][a736766]
-- :memo: Add link to playground [<sup>(3adcc10)</sup>][3adcc10]
-
-### :recycle: Refactor
-
-- :coffin: remove old CSS [<sup>(6161244)</sup>][6161244]
-
-### :gear: Miscellaneous Tasks
-
-- :bookmark: package.json : publishConfig.access = "public" [<sup>(4f0d912)</sup>][4f0d912]
-- :coffin: package.json - remove old scripts [<sup>(0f1e60f)</sup>][0f1e60f]
-- :green_heart: GH Pages: Copy JS file [<sup>(99da56e)</sup>][99da56e]
-- :green_heart: GH Pages: Copy JS file [<sup>(34d5569)</sup>][34d5569]
-- :green_heart: GH Pages: Copy JS file [<sup>(5cd6839)</sup>][5cd6839]
-
-<!-- LINKS -->
-[4f0d912]:../../commit/4f0d912fd5b9b9edb66715cf8da280724750c7fc
-[1444c4e]:../../commit/1444c4e429f2d6c0d3ce889265b1f27cf032c483
-[20933f8]:../../commit/20933f84dd1939fa854fbd29b439101cdddb02ce
-[c185c27]:../../commit/c185c2704369d1f1a34b0f2546db959c051750e2
-[6161244]:../../commit/61612449c05e981adc43152eed82116ee7255d6e
-[0d22ce5]:../../commit/0d22ce5ca09675dedff6da01793a8296d9eb6ba4
-[0f1e60f]:../../commit/0f1e60fb8b44d2bd74efed1163f505f3f49b95e1
-[a736766]:../../commit/a7367663429bfef18f0e09596788d56abe619a4a
-[b9eed8b]:../../commit/b9eed8b0d2a9d42f0bf88dea15c83950615ba43d
-[b0e767c]:../../commit/b0e767cdc892a2905f6502799feb7d80cb651198
-[99da56e]:../../commit/99da56e70f9a28908125caf860600764836f4e8f
-[34d5569]:../../commit/34d5569536fa5a33d6d109f333a712dbae4bae63
-[5cd6839]:../../commit/5cd683963b76be53375c6ba5590680080ce53538
-[3adcc10]:../../commit/3adcc10c7d0978571325ed9eee8c5f7e8172c6b4
-
 ## 1.0.0 - 2025-02-20
 
 
