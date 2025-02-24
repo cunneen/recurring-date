@@ -8,8 +8,6 @@
     "access": "public"
   },
   "scripts": {
-    "browserify": "browserify --standalone RecurringDate --debug --outfile dist/recurring-date.js ./index.js",
-    "sass": "sass ./site/scss/bootswatch-lux-minimal.scss ./site/css/bootstrap-lux.css",
     "test": "mocha --reporter spec",
     "types": "tsc"
   },
