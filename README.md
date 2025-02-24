@@ -38,7 +38,8 @@ var r = new RecurringDate({
   every: "1",
   unit: "d",
   end_condition: "until",
-  date_format: "MM/DD/YYYY",  
+  date_format: "MM/DD/YYYY",
+  timezone: 480, // UTC+8 i.e. 8 hours * 60 = 480 minutes  
 });
 var dates = r.generate();
 
@@ -94,6 +95,9 @@ where pattern is a JSON object with the following options:
 - rfor: if end_condition is 'for', pass an integer here.
 - nth: valid values are 'first', 'second', 'third', 'fourth', and 'last'.
   see 'occurrence_of' option. to be used with 'm' unit option.
+- date_format: date format string, as specified by [momentjs](http://momentjs.com/docs/#/parsing/string-format/). required.
+- moment_locale: locale string, as specified by [momentjs](http://momentjs.com/docs/#/parsing/string-format/). Default is 'en'.
+- timezone: A UTC offset in minutes, as per [momentjs utcOffset()](https://momentjs.com/docs/#/manipulating/utc-offset/)
 - occurrence_of: valid values are 0-6, corresponding to the days of the week.
   in conjuction with 'nth' option, specifies nth day of the month
   (last Sunday of the month). to be used with 'm' unit option.
@@ -105,6 +109,15 @@ ex.
     { start: new Date(), every: 2, unit: 'w', end_condition: 'for', rfor: 5, days: [1,3,5] }
     generates:
     Every 2 weeks on Monday, Wednesday, and Friday for 5 occurrences starting today
+
+---
+
+    static RecurringDate.initializeWithDateLibrary (dateLibrary)
+
+Initializes the RecurringDate class with a date library (e.g. moment or dayjs).
+
+For example:
+    RecurringDate.initializeWithDateLibrary(dayjs);
 
 ---
 
